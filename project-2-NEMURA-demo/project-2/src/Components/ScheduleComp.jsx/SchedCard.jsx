@@ -5,7 +5,7 @@ const SchedCard = ({ date }) => {
     <div className="sched-card-container">
       <div className="sched-card">
         <div>
-          <img src={date?.image?.medium} />
+          {/* <img src={date?.image?.medium} /> */}
           <h3>{date.name}</h3>
           <p>
             SO{date.season} EO{date.number}

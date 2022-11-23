@@ -111,7 +111,7 @@ export const Home = () => {
         <PeopleGrid people={people} />
       </div> */}
       {/* <ResultsCast/> */}
-      {/* <SchedGrid /> */}
+      <SchedGrid />
     </GlobalProvider>
   );
 };

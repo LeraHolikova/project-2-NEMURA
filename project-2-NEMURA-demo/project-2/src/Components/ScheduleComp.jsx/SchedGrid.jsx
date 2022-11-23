@@ -13,10 +13,13 @@ let year = today.getFullYear();
 let currentDate = `${year}-${month}-${day}`;
 // console.log(currentDate);
 
-const SchedGrid = () => {
-  const [schedule, setSchedule] = useState([]);
+let countyId = ["DE", "US", "TR", "IL"];
 
-  const URL = `https://api.tvmaze.com/schedule/web?date=${currentDate}&country=US`;
+const SchedGrid = () => {
+  const [loading, setLoading] = useState(true);
+  const [schedule, setSchedule] = useState([]);
+  const [country, setCountry] = useState([]);
+  const URL = `https://api.tvmaze.com/schedule/web?date=${currentDate}&country=${country}`;
   const getSchedule = async (URL, setResp) => {
     fetch(URL).then((resp) => {
       resp
@@ -29,19 +32,33 @@ const SchedGrid = () => {
   };
   useEffect(() => {
     getSchedule(URL, setSchedule);
-  }, []);
+    // setLoading(false);
+  }, [country]);
+  console.log(schedule);
+  const handleSelect = (e) => {
+    if (e.target.value !== "country") setCountry(e.target.value);
+
+    console.log(e.target.value);
+  };
   // console.log(schedule, "today");
 
   return (
     <section>
-      <div className="schedule-container">
-        <h1>today</h1>
-      </div>
-      <>
-        {schedule.map((date) => {
-          return <SchedCard date={date} />;
+      <hr />
+      <h1>Today's Schedule</h1>
+      <select onChange={handleSelect}>
+        <option>country</option>
+        {countyId.map((country, i) => {
+          return <option key={i}>{country}</option>;
         })}
-      </>
+      </select>
+      <div className="schedule-container">
+        <>
+          {schedule.map((date) => {
+            return <SchedCard date={date} />;
+          })}
+        </>
+      </div>
     </section>
   );
 };

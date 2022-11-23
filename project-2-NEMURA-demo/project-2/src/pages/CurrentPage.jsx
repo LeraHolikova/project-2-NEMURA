@@ -108,8 +108,12 @@ const CurrentPage = () => {
     // border: 2px solid yellow;
     border-radius: 10px;
     box-shadow: 5px 5px 15px 5px #1d1818;
-    // min-width: 100%;
+    min-width: 100%;
     // overflow: hidden;
+    @media all and (max-width: 768px) {
+      height: 700px;
+      // width: 400px;
+    }
   `;
   const Wraper = styled.section`
     display: grid;
@@ -124,6 +128,7 @@ const CurrentPage = () => {
     align-items: center;
     // grid-area: photo;
     @media all and (max-width: 768px) {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
   `;
 
@@ -152,12 +157,15 @@ const CurrentPage = () => {
       : showImage[1]?.resolutions.original.url});
     background-size: cover;
     object-fit: fit;
-    height: 500px;
+    height: 400px;
     padding: 100px;
     box-shadow: 5px 5px 15px 5px #1d1818;
     display: block;
     @media all and (max-width: 768px) {
       display: none;
+      object-fit: contain;
+      // background-attachment: fixed;
+      background-position: center;
     }
   `;
   const Summary = details.summary;
@@ -271,7 +279,7 @@ const CurrentPage = () => {
       )}
 
       {/* </div> */}
-      {/* <SelectSeasons seasons={seasons} id={params.id}/> */}
+      <SelectSeasons seasons={seasons} id={params.id} />
       <ScrollButton />
     </div>
   );
