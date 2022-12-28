@@ -3,6 +3,7 @@ import React, {
   //   createContext,
   useEffect,
   createContext,
+  useState,
 } from "react";
 import Reducer from "./Reducer";
 // initial state
@@ -23,11 +24,17 @@ export const GlobalProvider = (props) => {
   };
 
   useEffect(() => {
-    localStorage.setItem("favourites", JSON.stringify(state.favourites));
-  }, [state]);
+    const handleStorage = () => {
+      // Place for a function responsible for
+      // pulling and displaying local storage data
+      localStorage.setItem("favourites", JSON.stringify(state.favourites));
+    };
+    window.addEventListener("storage", handleStorage());
+    return () => window.removeEventListener("storage", handleStorage());
+  }, []);
 
-  const addTitleToFavourits = (title) => {
-    dispatch({ type: "ADD_FAVOURITE", payload: title });
+  const addTitleToFavourits = (show) => {
+    dispatch({ type: "ADD_FAVOURITE", payload: show });
   };
   const removeTitleFromFavourits = (id) => {
     dispatch({ type: "REMOVE_FAVOURITE", payload: id });

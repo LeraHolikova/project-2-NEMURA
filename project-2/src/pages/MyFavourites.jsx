@@ -12,38 +12,36 @@ import { GlobalProvider } from "../Components/Context/GlobalState";
 import FavouriteCard from "../Components/favourites/FavouriteCard";
 
 const MyFavourites = () => {
-const { favourites, addTitleToFavourits } = useContext(GlobalContext);
-console.log(addTitleToFavourits, "addTitleToFavourits from my fav page");
-console.log(favourites, "favouritesssss");
-
-return (
-// <GlobalProvider>
-<div>
-<div className="hero">
-<Quotes />
-</div>
-<div className="mal cards-section">
-{favourites.length === 0 ? (
-<h1>No Titles added</h1>
-) : (
-favourites.map((show, key) => {
-return (
-<div key={show.show?.id}>
-<FavouriteCard
-show={show}
-key={show.show?.id}
-// removeTitleFromFavourits={removeTitleFromFavourits}
-favourites={favourites}
-// type={"favourites"}
-/>
-</div>
-);
-})
-)}
-</div>
-</div>
-//{" "}
-// </GlobalProvider>
-);
+  const { favourites, addTitleToFavourits, removeTitleFromFavourits } =
+    useContext(GlobalContext);
+  console.log(addTitleToFavourits, "addTitleToFavourits from my fav page");
+  //   console.log(favourites, "favouritesssss");
+  const muly = favourites.map((favourite) => favourite.name);
+  console.log(favourites, "favourite");
+  return (
+    // <GlobalProvider>
+    <div>
+      <div className="hero">{/* <Quotes /> */}</div>
+      <div className="mal cards-section">
+        {favourites.length === 0 ? (
+          <h1>No Titles added</h1>
+        ) : (
+          favourites.map((show, index) => {
+            return (
+              <div key={index}>
+                <FavouriteCard
+                  show={show}
+                  removeTitleFromFavourits={removeTitleFromFavourits}
+                  favourites={favourites}
+                />
+              </div>
+            );
+          })
+        )}
+      </div>
+    </div>
+    //{" "}
+    // </GlobalProvider>
+  );
 };
 export default MyFavourites;

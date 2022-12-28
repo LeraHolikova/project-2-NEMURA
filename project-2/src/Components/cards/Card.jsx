@@ -15,9 +15,9 @@ const Card = ({
   addTitleToFavourits,
   favourites,
 }) => {
-  // const addedShow = favourites.find((i) => i.show.id === show.show.id);
+  const addedShow = favourites.find((i) => i.id === data.id);
 
-  // const avoidDuplicate = addedShow ? true : false;
+  const avoidDuplicate = addedShow ? true : false;
 
   const ratingConditional = (rating) => {
     if (rating <= 2) {
@@ -38,6 +38,7 @@ const Card = ({
       return "---";
     }
   };
+  console.log(data, "dataa");
 
   return (
     <>
@@ -106,7 +107,7 @@ const Card = ({
           <div>
             <button
               className="overlay"
-              // disabled={avoidDuplicate}
+              disabled={avoidDuplicate}
               onClick={() => addTitleToFavourits(data)}
             >
               add to fav

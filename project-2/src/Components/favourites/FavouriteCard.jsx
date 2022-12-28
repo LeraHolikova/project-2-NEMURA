@@ -18,11 +18,12 @@ const FavouriteCard = ({
   favourites,
   removeTitleFromFavourits,
 }) => {
-  //   const addedShow = favourites.find((i) => i.show.id === show.show.id);
+  const addedShow = favourites.find((i) => i.id === show.id);
+
   // console.log(show.show.id, "added show");
   // console.log(removeTitleFromFavourits, "removeTitleFromFavourits show");
 
-  //   const avoidDuplicate = addedShow ? true : false;
+  const avoidDuplicate = addedShow ? true : false;
   // console.log(type);
 
   const ratingConditional = (rating) => {
@@ -55,35 +56,35 @@ const FavouriteCard = ({
             onClick={() => {
               window.scroll(0, 0);
             }}
-            to={"/shows/" + show.show.name + "/" + show.show.id}
+            to={"/shows/" + show?.name + "/" + show?.id}
           >
             <img
               className="card-img"
-              src={show.show?.image ? show.show?.image?.medium : image}
+              src={show?.image ? show?.image?.medium : image}
             />
           </Link>
         </div>
         <div className="card-info">
           <p className="result-name">
-            <strong>{show.show?.name}</strong>
+            <strong>{show?.name}</strong>
           </p>
           <p>
             Network:{" "}
-            {show.show.network && show.show?.network.name
-              ? show.show.network.name
+            {show?.network && show?.network.name
+              ? show?.network.name
               : " Unknown"}
           </p>
           <p>
             <strong> </strong>
-            {ratingConditional(Math.round(show.show?.rating?.average))}
+            {ratingConditional(Math.round(show?.rating?.average))}
           </p>
         </div>
         <AddOrRemove show={show} type={type} />
         {/* <div>
           <button
             className="overlay"
-            // disabled={avoidDuplicate}
-            onClick={() => removeTitleFromFavourits(show)}
+            disabled={avoidDuplicate}
+            onClick={() => removeTitleFromFavourits(show?.id)}
           >
             remove
           </button>

@@ -6,13 +6,13 @@ import "./favourites.css";
 function AddOrRemove({ show }) {
   const { removeTitleFromFavourits } = useContext(GlobalContext);
   // console.log(removeTitleFromFavourits, "fromaddorremove");
-  //   console.log(show, "dsgxjkhfskdfd");
+  console.log(show, "dsgxjkhfskdfd");
 
   return (
     <div>
       <button
         className="overlay"
-        onClick={() => removeTitleFromFavourits(show.show.id)}
+        onClick={() => removeTitleFromFavourits(show.id)}
       >
         Remove
       </button>
