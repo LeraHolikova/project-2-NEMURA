@@ -11,6 +11,8 @@ import SchedGrid from "../Components/ScheduleComp.jsx/SchedGrid.jsx";
 import { GlobalProvider } from "../Components/Context/GlobalState.jsx";
 import { TopPicks } from "../Components/TopPicks/TopPicks.jsx";
 import "react-alice-carousel/lib/alice-carousel.css";
+import Register from "./Register.jsx";
+import Login from "./Login.jsx";
 
 export const Home = () => {
   const [people, setPeople] = useState([]);
@@ -63,6 +65,7 @@ export const Home = () => {
   // console.log(shows, "shows i chose");
   return (
     <GlobalProvider>
+      {/* <Register /> */}
       <div>
         <div className="hero">
           <Search
