@@ -19,7 +19,7 @@ const SchedGrid = () => {
 // const [loading, setLoading] = useState(true);
 const [schedule, setSchedule] = useState([]);
 const [country, setCountry] = useState([]);
-const URL = `https://api.tvmaze.com/schedule/web?date=${currentDate}&country=${country}`;
+// const URL = `https://api.tvmaze.com/schedule/web?date=${currentDate}&country=${country}`;
 const getSchedule = async (URL, setResp) => {
 fetch(URL).then((resp) => {
 resp
